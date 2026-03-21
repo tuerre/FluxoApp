@@ -72,3 +72,10 @@
     @apply bg-background text-foreground font-['Poppins',sans-serif];
     }
 }
+
+body, html {
+  ::selection {
+    background: #7ce6b6;
+    color: #323332;
+  }
+}
