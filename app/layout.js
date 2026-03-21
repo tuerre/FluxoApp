@@ -14,7 +14,7 @@ export default function RootLayout({ children }) {
           attribute="class"
           defaultTheme="dark"
           enableSystem={false}
-          storageKey="gastosapp-theme"
+          storageKey="fluxo-theme"
         >
           <AuthProvider>
             {children}

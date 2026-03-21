@@ -8,8 +8,7 @@ import { Input } from '@/components/ui/input'
 import { Label } from '@/components/ui/label'
 import { Button } from '@/components/ui/button'
 import { useAuth } from '@/contexts/AuthContext'
-import { Wallet, Mail, Lock, CheckCircle } from 'lucide-react'
-import { Alert, AlertDescription } from '@/components/ui/alert'
+import { Wallet, Mail, Lock } from 'lucide-react'
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from '@/components/ui/card'
 
 export default function RegisterPage() {
@@ -17,7 +16,6 @@ export default function RegisterPage() {
   const [password, setPassword] = useState('')
   const [confirmPassword, setConfirmPassword] = useState('')
   const [loading, setLoading] = useState(false)
-  const [showSuccess, setShowSuccess] = useState(false)
   const router = useRouter()
   const { signUp } = useAuth()
 
@@ -48,8 +46,8 @@ export default function RegisterPage() {
 
     try {
       await signUp(email, password)
-      setShowSuccess(true)
       toast.success('¡Cuenta creada exitosamente!')
+      router.push('/dashboard')
     } catch (error) {
       console.error('Error al registrarse:', error)
       if (error.message.includes('already registered')) {
@@ -60,43 +58,6 @@ export default function RegisterPage() {
     } finally {
       setLoading(false)
     }
-  }
-
-  if (showSuccess) {
-    return (
-      <div className="min-h-screen flex items-center justify-center bg-background p-4">
-        <Card className="w-full max-w-md">
-          <CardHeader className="text-center space-y-2">
-            <div className="flex justify-center mb-4">
-              <div className="bg-green-500/10 p-4 rounded-full">
-                <CheckCircle className="w-12 h-12 text-green-500" />
-              </div>
-            </div>
-            <CardTitle className="text-2xl font-bold">¡Registro Exitoso!</CardTitle>
-          </CardHeader>
-          <CardContent className="space-y-4">
-            <Alert>
-              <AlertDescription>
-                <p className="mb-2">
-                  Te hemos enviado un correo electrónico de verificación a <strong>{email}</strong>.
-                </p>
-                <p>
-                  Por favor revisa tu bandeja de entrada y haz clic en el enlace de verificación para activar tu cuenta.
-                </p>
-              </AlertDescription>
-            </Alert>
-          </CardContent>
-          <CardFooter>
-            <Button
-              onClick={() => router.push('/login')}
-              className="w-full"
-            >
-              Ir al inicio de sesión
-            </Button>
-          </CardFooter>
-        </Card>
-      </div>
-    )
   }
 
   return (

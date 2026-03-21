@@ -82,7 +82,7 @@ export default function AppLayout({ children }) {
               <div className="bg-primary/10 p-2 rounded-lg">
                 <Wallet className="w-6 h-6 text-primary" />
               </div>
-              <span className="text-xl font-bold">GastosApp</span>
+              <span className="text-xl font-bold">Fluxo</span>
             </div>
             <Button
               variant="ghost"
@@ -150,7 +150,7 @@ export default function AppLayout({ children }) {
               <div className="bg-primary/10 p-1.5 rounded-lg">
                 <Wallet className="w-5 h-5 text-primary" />
               </div>
-              <span className="font-bold">GastosApp</span>
+              <span className="font-bold">Fluxo</span>
             </div>
             <div className="w-10" /> {/* Spacer para centrar el título */}
           </div>

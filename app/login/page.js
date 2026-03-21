@@ -40,8 +40,6 @@ export default function LoginPage() {
       console.error('Error al iniciar sesión:', error)
       if (error.message.includes('Invalid login credentials')) {
         toast.error('Credenciales incorrectas')
-      } else if (error.message.includes('Email not confirmed')) {
-        toast.error('Por favor verifica tu correo electrónico antes de iniciar sesión')
       } else {
         toast.error('Error al iniciar sesión. Por favor intenta de nuevo.')
       }
